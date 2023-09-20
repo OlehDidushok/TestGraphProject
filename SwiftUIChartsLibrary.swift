@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftUICharts
 
-struct SwiftUIChartsLibraryMy: View {
+struct SwiftUIChartsLibraryView: View {
     let data: LineChartData = weekOfData()
     var body: some View {
         LineChart(chartData: data)
@@ -16,7 +16,7 @@ struct SwiftUIChartsLibraryMy: View {
             .yAxisGrid(chartData: data)
             .xAxisLabels(chartData: data)
             .yAxisLabels(chartData: data)
-            .frame(minWidth: 150, maxWidth: 900, minHeight: 150, idealHeight: 00, maxHeight: 300, alignment: .center)
+            .frame(minWidth: 150, maxWidth: 900, minHeight: 150, idealHeight: 00, maxHeight: 200, alignment: .center)
             .padding(.horizontal, 24)
     }
     
@@ -62,6 +62,6 @@ struct SwiftUIChartsLibraryMy: View {
 
 struct SwiftUIChartsLibrary_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIChartsLibraryMy()
+        SwiftUIChartsLibraryView()
     }
 }

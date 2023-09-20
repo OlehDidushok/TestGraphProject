@@ -15,11 +15,11 @@ struct LineView: View {
             let height = geometry.size.height
             let width = geometry.size.width
             Path { path in
-                    path.move(to: CGPoint(x: 0, y: height * self.ratio(for: 0)))
+                path.move(to: CGPoint(x: 0, y: height * self.ratio(for: 0)))
                 for index in 0..<dataPoints.count {
-                        path.addLine(to: CGPoint(
-                            x: CGFloat(index) * width / CGFloat(dataPoints.count - 1),
-                            y: height * self.ratio(for: index)))
+                    path.addLine(to: CGPoint(
+                        x: CGFloat(index) * width / CGFloat(dataPoints.count - 1),
+                        y: height * self.ratio(for: index)))
                 }
             }
             .stroke(Color.accentColor, style: StrokeStyle(lineWidth: 2, lineJoin: .round))
@@ -27,7 +27,7 @@ struct LineView: View {
         .padding()
     }
     private func ratio(for index: Int) -> Double {
-        let pointValue = (dataPoints[index] ?? 0.0) ?? 0.0
+        let pointValue = (dataPoints[index] ?? 0.0) 
         return 1 - (pointValue / 3)
     }
 }
@@ -42,20 +42,20 @@ struct LineChartCircleView: View {
             let width = geometry.size.width
             
             Path { path in
-                    path.move(to: CGPoint(x: 0, y: (height * self.ratio(for: 0)) - radius))
-                    path.addArc(center: CGPoint(x: 0, y: height * self.ratio(for: 0)),
+                path.move(to: CGPoint(x: 0, y: (height * self.ratio(for: 0)) - radius))
+                path.addArc(center: CGPoint(x: 0, y: height * self.ratio(for: 0)),
+                            radius: radius, startAngle: .zero,
+                            endAngle: .degrees(360.0), clockwise: false)
+                for index in 1..<dataPoints.count {
+                    path.move(to: CGPoint(
+                        x: CGFloat(index) * width / CGFloat(dataPoints.count - 1),
+                        y: height * (dataPoints[index] ?? 0) / 3))
+                    
+                    path.addArc(center: CGPoint(
+                        x: CGFloat(index) * width / CGFloat(dataPoints.count - 1),
+                        y: height * self.ratio(for: index)),
                                 radius: radius, startAngle: .zero,
                                 endAngle: .degrees(360.0), clockwise: false)
-                for index in 1..<dataPoints.count {
-                        path.move(to: CGPoint(
-                            x: CGFloat(index) * width / CGFloat(dataPoints.count - 1),
-                            y: height * (dataPoints[index] ?? 0) / 3))
-                        
-                        path.addArc(center: CGPoint(
-                            x: CGFloat(index) * width / CGFloat(dataPoints.count - 1),
-                            y: height * self.ratio(for: index)),
-                                    radius: radius, startAngle: .zero,
-                                    endAngle: .degrees(360.0), clockwise: false)
                 }
             }
             .foregroundColor(.green)
@@ -63,7 +63,7 @@ struct LineChartCircleView: View {
         .padding()
     }
     private func ratio(for index: Int) -> Double {
-       return 1 - ((dataPoints[index] ?? 0) / 3)
+        return 1 - ((dataPoints[index] ?? 0) / 3)
     }
 }
 
@@ -176,7 +176,7 @@ struct LineChartView: View {
                             LineView(dataPoints: dataPoints)
                             
                             LineChartCircleView(dataPoints: dataPoints, radius: 4.0)
-                  
+                            
                         }
                     }
                     .frame(height: fullChartHeight)
@@ -184,6 +184,8 @@ struct LineChartView: View {
                 XaxisView()
             }
         }
+        .frame(height: 200)
+        .padding(.horizontal)
     }
 }
 
@@ -193,23 +195,27 @@ let selectedWeek: [Double?] = [ MoodCondition.great.rawValue, MoodCondition.soso
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
+        VStack {
             VStack {
-                VStack {
-                    LineChartView(dataPoints: selectedWeek)
-                            .frame(height: 300)
-                            .padding(.horizontal)
-//                    ContentViews()
-//                    SwiftUIChartsLibraryMy()
-//                    Spacer()
-//                    NavigationLink(destination: LineCharts()) {
-//                        Text("Go to LineGraph with framework Charts")
-//                    }
-                }
+                Text("A line graph through the Path")
+                    .font(Font.headline)
+                    .foregroundColor(.blue)
+                LineChartView(dataPoints: selectedWeek)
+                Spacer()
+                Text("A line graph through the SwiftUIChartsLibrary")
+                    .font(Font.headline)
+                    .foregroundColor(.blue)
+                SwiftUIChartsLibraryView()
+                Spacer()
+                Text("A line graph through the Charts")
+                    .font(Font.headline)
+                    .foregroundColor(.blue)
+                ChartsView()
             }
         }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

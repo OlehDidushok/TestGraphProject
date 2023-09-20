@@ -8,39 +8,34 @@
 import SwiftUI
 import Charts
 
-struct Days: Identifiable {
+struct Day: Identifiable {
     let id = UUID()
     let mood: MoodCondition
     let day: WeekDay
 }
 
-let currentWeeks: [Days] = [
-    Days(mood: .great, day: .mon),
-    Days(mood: .soso, day: .tue),
-    Days(mood: .fine, day: .wed),
-    Days(mood: .soso, day: .thu),
-    Days(mood: .fine, day: .fri),
-    Days(mood: .normal, day: .sat),
-    Days(mood: .great, day: .sun)
+let currentWeeks: [Day] = [
+    Day(mood: .great, day: .mon),
+    Day(mood: .soso, day: .tue),
+    Day(mood: .fine, day: .wed),
+    Day(mood: .soso, day: .thu),
+    Day(mood: .fine, day: .fri),
+    Day(mood: .normal, day: .sat),
+    Day(mood: .great, day: .sun)
 ]
 
-struct ContentViews: View {
-    
+struct ChartsView: View {
     var body: some View {
         VStack {
             Chart {
                 ForEach(currentWeeks) {
                     LineMark(
                         x: .value("Week Day", $0.day.rawValue.capitalized),
-                        y: .value("Mood", $0.mood.rawValue)
-                    )
-
+                        y: .value("Mood", $0.mood.rawValue))
                     PointMark(
                         x: .value("Week Day", $0.day.rawValue.capitalized),
-                        y: .value("Mood", $0.mood.rawValue)
-                    )
+                        y: .value("Mood", $0.mood.rawValue))
                     .foregroundStyle(.green)
-                    
                 }
             }
             .chartXAxis {
@@ -51,7 +46,6 @@ struct ContentViews: View {
                         .foregroundStyle(.black)
                 }
             }
-
             .chartYAxis {
                 AxisMarks(preset: .aligned,
                           position: .leading) { value in
@@ -64,19 +58,18 @@ struct ContentViews: View {
                     AxisGridLine(
                         stroke: StrokeStyle(
                             lineWidth: 1,
-                            dash: [4]
-                        ))
+                            dash: [4]))
                 }
             }
         }
-        .frame(height: 300)
+        .frame(height: 200)
         .padding(.horizontal)
     }
 }
 
 struct LineCharts: View {
     var body: some View {
-        ContentViews()
+        ChartsView()
     }
 }
 
