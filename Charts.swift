@@ -15,13 +15,13 @@ struct Day: Identifiable {
 }
 
 let currentWeeks: [Day] = [
-    Day(mood: .great, day: .mon),
-    Day(mood: .soso, day: .tue),
-    Day(mood: .fine, day: .wed),
-    Day(mood: .soso, day: .thu),
-    Day(mood: .fine, day: .fri),
-    Day(mood: .normal, day: .sat),
-    Day(mood: .great, day: .sun)
+    Day(mood: .excellent, day: .mon),
+    Day(mood: .terrible, day: .tue),
+    Day(mood: .good, day: .wed),
+    Day(mood: .terrible, day: .thu),
+    Day(mood: .good, day: .fri),
+    Day(mood: .usual, day: .sat),
+    Day(mood: .excellent, day: .sun)
 ]
 
 struct ChartsView: View {

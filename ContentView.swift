@@ -99,7 +99,7 @@ struct YaxisView: View {
                     Text(condition.name.capitalized)
                         .font(Font.headline)
                         .lineLimit(1)
-                        .minimumScaleFactor(0.2)
+//                        .minimumScaleFactor(0.2)
                 }
                 .offset(y: (height * 0.9) - (CGFloat(MoodCondition.allCases.firstIndex(of: condition) ?? 0) * CGFloat(scaleFactor)))
             }
@@ -108,21 +108,21 @@ struct YaxisView: View {
 }
 
 enum MoodCondition: Double, CaseIterable {
-    case soso = 0
-    case normal
-    case fine
-    case great
+    case terrible = 0
+    case usual
+    case good
+    case excellent
     
     var name: String {
         switch self {
-        case .soso:
-            return "Soso"
-        case .normal:
-            return "Normal"
-        case .fine:
-            return "Fine"
-        case .great:
-            return "Great"
+        case .terrible:
+            return "Terrible"
+        case .usual:
+            return "Usual"
+        case .good:
+            return "Good"
+        case .excellent:
+            return "Excellent"
         }
     }
     
@@ -163,7 +163,7 @@ struct LineChartView: View {
     var dataPoints: [Double?]
     var body: some View {
         GeometryReader { geometry in
-            let axisWidth = geometry.size.width * 0.15
+            let axisWidth = geometry.size.width * 0.23
             let fullChartHeight = geometry.size.height
             let scaleFactor = (fullChartHeight * 1.15) / CGFloat(MoodCondition.allCases.count)
             VStack {
@@ -190,7 +190,7 @@ struct LineChartView: View {
 }
 
 
-let selectedWeek: [Double?] = [ MoodCondition.great.rawValue, MoodCondition.soso.rawValue, MoodCondition.fine.rawValue, MoodCondition.soso.rawValue, MoodCondition.fine.rawValue, MoodCondition.normal.rawValue, MoodCondition.great.rawValue ]
+let selectedWeek: [Double?] = [ MoodCondition.excellent.rawValue, MoodCondition.terrible.rawValue, MoodCondition.good.rawValue, MoodCondition.terrible.rawValue, MoodCondition.good.rawValue, MoodCondition.usual.rawValue, MoodCondition.excellent.rawValue ]
 
 
 struct ContentView: View {

@@ -16,19 +16,19 @@ struct SwiftUIChartsLibraryView: View {
             .yAxisGrid(chartData: data)
             .xAxisLabels(chartData: data)
             .yAxisLabels(chartData: data)
-            .frame(minWidth: 150, maxWidth: 900, minHeight: 150, idealHeight: 00, maxHeight: 200, alignment: .center)
+            .frame(minWidth: 150, maxWidth: 350, minHeight: 100, idealHeight: 150, maxHeight: 200, alignment: .center)
             .padding(.horizontal, 24)
     }
     
     static func weekOfData() -> LineChartData {
         let data = LineDataSet(dataPoints: [
-            LineChartDataPoint(value: MoodCondition.great.rawValue, xAxisLabel: WeekDay.mon.rawValue.capitalized),
-            LineChartDataPoint(value: MoodCondition.soso.rawValue, xAxisLabel: WeekDay.tue.rawValue.capitalized),
-            LineChartDataPoint(value: MoodCondition.fine.rawValue, xAxisLabel: WeekDay.wed.rawValue.capitalized),
-            LineChartDataPoint(value: MoodCondition.soso.rawValue, xAxisLabel: WeekDay.thu.rawValue.capitalized),
-            LineChartDataPoint(value: MoodCondition.fine.rawValue, xAxisLabel: WeekDay.fri.rawValue.capitalized),
-            LineChartDataPoint(value: MoodCondition.normal.rawValue, xAxisLabel: WeekDay.sat.rawValue.capitalized),
-            LineChartDataPoint(value: MoodCondition.great.rawValue, xAxisLabel: WeekDay.sun.rawValue.capitalized)
+            LineChartDataPoint(value: MoodCondition.excellent.rawValue, xAxisLabel: WeekDay.mon.rawValue.capitalized),
+            LineChartDataPoint(value: MoodCondition.terrible.rawValue, xAxisLabel: WeekDay.tue.rawValue.capitalized),
+            LineChartDataPoint(value: MoodCondition.good.rawValue, xAxisLabel: WeekDay.wed.rawValue.capitalized),
+            LineChartDataPoint(value: MoodCondition.terrible.rawValue, xAxisLabel: WeekDay.thu.rawValue.capitalized),
+            LineChartDataPoint(value: MoodCondition.good.rawValue, xAxisLabel: WeekDay.fri.rawValue.capitalized),
+            LineChartDataPoint(value: MoodCondition.usual.rawValue, xAxisLabel: WeekDay.sat.rawValue.capitalized),
+            LineChartDataPoint(value: MoodCondition.excellent.rawValue, xAxisLabel: WeekDay.sun.rawValue.capitalized)
         ],
                                pointStyle: PointStyle(fillColour: .green, pointType: .filled, pointShape: .circle),
                                style: LineStyle(lineColour: ColourStyle(colour: .blue), lineType: .line))
@@ -48,7 +48,8 @@ struct SwiftUIChartsLibraryView: View {
                                         yAxisLabelFont      : .headline,
                                         yAxisLabelColour    : Color.black,
                                         yAxisNumberOfLabels : 4,
-                                        yAxisLabelType      : .custom)
+                                        yAxisLabelType      : .custom
+        )
         
         let chartData = LineChartData(dataSets       : data,
                                       metadata       : ChartMetadata(title: "", subtitle: ""),
