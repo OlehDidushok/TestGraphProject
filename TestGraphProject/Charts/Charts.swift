@@ -8,41 +8,47 @@
 import SwiftUI
 import Charts
 
-struct Day: Identifiable {
-    let id = UUID()
-    let mood: MoodCondition
-    let day: WeekDay
-}
-
-let currentWeeks: [Day] = [
-    Day(mood: .excellent, day: .mon),
-    Day(mood: .terrible, day: .tue),
-    Day(mood: .good, day: .wed),
-    Day(mood: .terrible, day: .thu),
-    Day(mood: .good, day: .fri),
-    Day(mood: .usual, day: .sat),
-    Day(mood: .excellent, day: .sun)
-]
-
 struct ChartsView: View {
+    struct Day: Identifiable {
+        let id = UUID()
+        let mood: MoodCondition
+        let day: WeekDay
+    }
+
+    let currentWeeks: [Day] = [
+        Day(mood: .excellent, day: .monday),
+        Day(mood: .terrible, day: .tuesday),
+        Day(mood: .good, day: .wednesday),
+        Day(mood: .terrible, day: .thursday),
+        Day(mood: .good, day: .friday),
+        Day(mood: .usual, day: .saturnday),
+        Day(mood: .excellent, day: .sunday)
+    ]
+    
+    private let weekDayTitle = "Week Day"
+    private let moodTitle = "Mood"
+    
     var body: some View {
         VStack {
             Chart {
                 ForEach(currentWeeks) {
                     LineMark(
-                        x: .value("Week Day", $0.day.rawValue.capitalized),
-                        y: .value("Mood", $0.mood.rawValue))
+                        x: .value(weekDayTitle, $0.day.rawValue.capitalized),
+                        y: .value(moodTitle, $0.mood.rawValue)
+                    )
                     PointMark(
-                        x: .value("Week Day", $0.day.rawValue.capitalized),
-                        y: .value("Mood", $0.mood.rawValue))
+                        x: .value(weekDayTitle, $0.day.rawValue.capitalized),
+                        y: .value(moodTitle, $0.mood.rawValue)
+                    )
                     .foregroundStyle(.green)
                 }
             }
             .chartXAxis {
                 AxisMarks(preset: .aligned,
-                          position: .bottom) { value in
+                          position: .bottom
+                ) { value in
                     AxisValueLabel()
-                        .font(Font.headline)
+                        .font(.headline)
                         .foregroundStyle(.black)
                 }
             }
@@ -52,7 +58,7 @@ struct ChartsView: View {
                     AxisValueLabel {
                         let day = MoodCondition.statusList[value.index]
                         Text(day.capitalized)
-                            .font(Font.headline)
+                            .font(.headline)
                             .foregroundColor(.black)
                     }
                     AxisGridLine(
@@ -67,14 +73,6 @@ struct ChartsView: View {
     }
 }
 
-struct LineCharts: View {
-    var body: some View {
-        ChartsView()
-    }
-}
-
-struct Charts_Previews: PreviewProvider {
-    static var previews: some View {
-        LineCharts()
-    }
+#Preview {
+    ChartsView()
 }

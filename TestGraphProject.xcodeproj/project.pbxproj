@@ -14,6 +14,8 @@
 		CE3E33C32A2290BA007F6FC3 /* Charts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E33C22A2290B9007F6FC3 /* Charts.swift */; };
 		CE3E33C82A2295F5007F6FC3 /* SwiftUIChartsLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E33C72A2295F5007F6FC3 /* SwiftUIChartsLibrary.swift */; };
 		CE3E33CE2A229D11007F6FC3 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CE3E33CD2A229D11007F6FC3 /* SwiftUICharts */; };
+		CE8608012B1A13F200593230 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8608002B1A13F200593230 /* General.swift */; };
+		CE8608042B1A143300593230 /* Graph+Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8608032B1A143300593230 /* Graph+Shapes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		CE3E33BB2A226580007F6FC3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CE3E33C22A2290B9007F6FC3 /* Charts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charts.swift; sourceTree = "<group>"; };
 		CE3E33C72A2295F5007F6FC3 /* SwiftUIChartsLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIChartsLibrary.swift; sourceTree = "<group>"; };
+		CE8608002B1A13F200593230 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		CE8608032B1A143300593230 /* Graph+Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Graph+Shapes.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +64,8 @@
 			children = (
 				CE3E33B32A22657F007F6FC3 /* TestGraphProjectApp.swift */,
 				CE3E33B52A22657F007F6FC3 /* ContentView.swift */,
-				CE3E33C22A2290B9007F6FC3 /* Charts.swift */,
-				CE3E33C72A2295F5007F6FC3 /* SwiftUIChartsLibrary.swift */,
+				CE8608002B1A13F200593230 /* General.swift */,
+				CE8608022B1A140600593230 /* Charts */,
 				CE3E33B72A226580007F6FC3 /* Assets.xcassets */,
 				CE3E33B92A226580007F6FC3 /* TestGraphProject.entitlements */,
 				CE3E33BA2A226580007F6FC3 /* Preview Content */,
@@ -75,6 +79,16 @@
 				CE3E33BB2A226580007F6FC3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CE8608022B1A140600593230 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E33C22A2290B9007F6FC3 /* Charts.swift */,
+				CE8608032B1A143300593230 /* Graph+Shapes.swift */,
+				CE3E33C72A2295F5007F6FC3 /* SwiftUIChartsLibrary.swift */,
+			);
+			path = Charts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,8 +169,10 @@
 			files = (
 				CE3E33C32A2290BA007F6FC3 /* Charts.swift in Sources */,
 				CE3E33B62A22657F007F6FC3 /* ContentView.swift in Sources */,
+				CE8608042B1A143300593230 /* Graph+Shapes.swift in Sources */,
 				CE3E33C82A2295F5007F6FC3 /* SwiftUIChartsLibrary.swift in Sources */,
 				CE3E33B42A22657F007F6FC3 /* TestGraphProjectApp.swift in Sources */,
+				CE8608012B1A13F200593230 /* General.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
